@@ -30,5 +30,6 @@ class PhotoAdapter(val photos: List<Photo>): RecyclerView.Adapter<PhotoViewHolde
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         //
+        holder.titleTextView.text = "Photo : ${photos[position].id}"
     }
 }

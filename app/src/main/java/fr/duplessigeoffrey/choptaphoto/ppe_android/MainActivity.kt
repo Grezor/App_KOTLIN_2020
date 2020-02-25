@@ -3,6 +3,8 @@ package fr.duplessigeoffrey.choptaphoto.ppe_android
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Adapter
+import androidx.recyclerview.widget.GridLayoutManager
 import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -49,12 +51,20 @@ class MainActivity : AppCompatActivity() {
         executors.submit {
             try {
                 //recupere nos photo
-                val photos = photoCall.execute()
-                Log.d("APP", "Size : ${photos.body()?.size}") // affiche 2
-                Log.d("APP", "Body : ${photos.body()}") // affiche un tableau avec deux chose dedans
-                runOnUiThread {
-                   // helloTextView.text = "${photos.body()}"
+                val photos = photoCall.execute().body()
+                if (photos != null){
+                    runOnUiThread {
+                        // helloTextView.text = "${photos.body()}"
+                        // adpater
+                        recyclerView.adapter = PhotoAdapter(photos)
+                        recyclerView.layoutManager = GridLayoutManager(this, 2)
+
+                    }
+
+                    Log.d("APP", "Size : ${photos.size}") // affiche 2
+                    Log.d("APP", "Body : ${photos}") // affiche un tableau avec deux chose dedans
                 }
+
             }catch (e: Exception){
                 Log.e("APP", e.message)
             }
