@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp">
+    android:layout_height="170dp"
+    android:background="#3F51B5">
 
     <TextView
         android:id="@+id/photoTitleTextView"
@@ -18,8 +19,8 @@
 
     <ImageView
         android:id="@+id/PhotoimageView"
-        android:layout_width="152dp"
-        android:layout_height="152dp"
+        android:layout_width="124dp"
+        android:layout_height="105dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
