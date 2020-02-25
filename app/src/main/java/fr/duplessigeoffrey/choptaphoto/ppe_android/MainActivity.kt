@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
         // instancie l'apel de photo.php avec le code SONA
         val photoCall = photoService.listPhotos("SONA")
 
-        helloTextView.text = "un truc dedans"
+        //helloTextView.text = "un truc dedans"
 
         // thread, elle crée un nouveau thread, avec la possibilité d'instruction
         val executors = Executors.newSingleThreadExecutor()
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                 Log.d("APP", "Size : ${photos.body()?.size}") // affiche 2
                 Log.d("APP", "Body : ${photos.body()}") // affiche un tableau avec deux chose dedans
                 runOnUiThread {
-                    helloTextView.text = "${photos.body()}"
+                   // helloTextView.text = "${photos.body()}"
                 }
             }catch (e: Exception){
                 Log.e("APP", e.message)
