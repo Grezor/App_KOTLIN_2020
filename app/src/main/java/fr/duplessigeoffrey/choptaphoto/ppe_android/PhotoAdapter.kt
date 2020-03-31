@@ -1,19 +1,25 @@
 package fr.duplessigeoffrey.choptaphoto.ppe_android
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.photo_row.view.*
+import java.util.concurrent.Executors
 
 class PhotoViewHolder(v : View) : RecyclerView.ViewHolder(v){
     val titleTextView = v.photoTitleTextView
     val photoImageView = v.PhotoimageView
+    val likeImageView = v.likeImageView
 }
-
-class PhotoAdapter(val photos: List<Photo>): RecyclerView.Adapter<PhotoViewHolder>() {
+// on passe l'activité
+class PhotoAdapter(val photos: List<Photo>, private val activity: AppCompatActivity): RecyclerView.Adapter<PhotoViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
         // inflater permet d'instancier un layout
         val  inflater = LayoutInflater.from(parent.context)
@@ -26,20 +32,57 @@ class PhotoAdapter(val photos: List<Photo>): RecyclerView.Adapter<PhotoViewHolde
     }
 
     override fun getItemCount(): Int {  // ou override fun getItemCount() = photo.count
-        // on recupere les photo
+        // on recupere les photos
         return photos.count()
     }
 
+
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        //
+        Log.d("APP", "${photos[position]}")
         when(position % 3){
-            0 -> holder.itemView.setBackgroundColor(Color.parseColor("#f99999"))
-            1 -> holder.itemView.setBackgroundColor(Color.parseColor("#99ff99"))
-            2 -> holder.itemView.setBackgroundColor(Color.parseColor("#9999ff"))
+            0 -> holder.itemView.getRessources.getColor(R.color.colorCellColor1)
+            1 -> holder.itemView.setBackgroundColor(R.color.colorCellColor2)
+            2 -> holder.itemView.setBackgroundColor(R.color.colorCellColor3)
         }
-        holder.titleTextView.text = "Photo : ${photos[position].id}"
+        // charger le texte
+        holder.titleTextView.text =
+            activity.getString(R.string.photo_url_name) + photos[position].url
         // on ajoute une photo basic
-        val imageUrl = "https://cdn.shopify.com/s/files/1/1087/6636/products/Captain-America-Icon_01_Top-View_600x600.png?v=1558444338"
+         val imageUrl = "https://yostane.alwaysdata.net/" + photos[position].url;
+       // val imageUrl = "https://duplessigeoffrey.fr/" + photos[position].url;
         Glide.with(holder.photoImageView).load(imageUrl).into(holder.photoImageView)
+
+        toogleLikeImage(position, holder)
+
+        holder.likeImageView.setOnClickListener {
+            photos[position].estAime = !photos[position].estAime
+            toogleLikeImage(position, holder)
+            val executor = Executors.newSingleThreadExecutor()
+            executor.submit{
+                val call = RetrofitHelper.getToogleLikeCall(photos[position].id)
+                call.execute()
+            }
+        }
+
+        // ouvrir une nouvelle view, lors du click
+        holder.itemView.setOnClickListener {
+            // crée un Intent, avec l'activité source et l'activité final
+            val intent = Intent(activity, FullScreenPhotoActivity::class.java)
+            //c'est lui qui permet de passer des parametre
+            intent.putExtra("URL", imageUrl)
+            // activité qui fait la demande, un apel vers le système android
+            activity.startActivity(intent)
+        }
+    }
+
+    private fun toogleLikeImage(
+        position: Int,
+        holder: PhotoViewHolder
+    ) {
+        if (photos[position].estAime) {
+            holder.likeImageView.setImageResource(R.drawable.ic_like)
+        } else {
+            holder.likeImageView.setImageResource(R.drawable.ic_not_like)
+        }
     }
 }

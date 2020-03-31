@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="photo_url_name">Das photo:</string>
+    <string name="button_title_validate">Validierung</string>
+    <string name="edit_text_hint_code_event">Code évenement</string>
+</resources>
