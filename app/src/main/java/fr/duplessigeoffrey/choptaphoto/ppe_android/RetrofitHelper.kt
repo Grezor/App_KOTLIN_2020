@@ -10,8 +10,8 @@ class RetrofitHelper {
     companion object {
             private val photoService: PhotoService = Retrofit.Builder()
             // le serveur api
-            // .baseUrl("https://duplessigeoffrey.fr/")
-            .baseUrl("https://yostane.alwaysdata.net/")
+             .baseUrl("https://duplessigeoffrey.fr/api2/")
+            //.baseUrl("https://yostane.alwaysdata.net/")
             // .baseUrl("https://grezor.alwaysdata.net/")
             // apel dependance mochi
             .addConverterFactory(MoshiConverterFactory.create())

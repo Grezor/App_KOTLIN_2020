@@ -5,10 +5,17 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface PhotoService{
-    @GET("photos.php")
+    //@GET("photos.php")
+    //fun listPhotos(@Query("code") codeEvent: String): Call<List<Photo>>
+
+    //@POST("like.php")
+   // @FormUrlEncoded
+   // fun toogleLike(@Field("photo_id") photoId: Int): Call<ResponseBody>
+
+    @GET("photos_event.php")
     fun listPhotos(@Query("code") codeEvent: String): Call<List<Photo>>
 
-    @POST("like.php")
+    @POST("toogle_like.php")
     @FormUrlEncoded
-    fun toogleLike(@Field("photo_id") photoId: Int): Call<ResponseBody>
+    fun toogleLike(@Field("id_photo") photoId: Int): Call<ResponseBody>
 }
