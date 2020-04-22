@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="170dp"
+    android:layout_height="200dp"
     android:background="#3F51B5">
 
     <TextView
@@ -22,7 +22,6 @@
         android:layout_width="124dp"
         android:layout_height="105dp"
         android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -31,9 +30,7 @@
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_marginTop="128dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.475"
+        app:layout_constraintEnd_toStartOf="@+id/shareimageView"
         app:layout_constraintStart_toEndOf="@+id/photoTitleTextView"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_like" />
@@ -42,10 +39,23 @@
         android:id="@+id/buttonShare"
         android:layout_width="70dp"
         android:layout_height="37dp"
-        android:layout_marginTop="128dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="112dp"
+        android:backgroundTint="@color/colorBgGrey"
         android:text="share"
-        app:layout_constraintEnd_toStartOf="@+id/photoTitleTextView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textColor="@color/colorButtonText"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/PhotoimageView" />
+
+    <ImageView
+        android:id="@+id/shareimageView"
+        android:layout_width="21dp"
+        android:layout_height="21dp"
+        android:layout_marginTop="132dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_share_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

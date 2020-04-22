@@ -10,5 +10,8 @@
     <color name="colorCellColor2">#4CAF50</color>
     <color name="colorCellColor3">#2196F3</color>
 
+    <color name="colorOrange">#e67e22</color>
+
     <color name="colorBgGrey">#bdc3c7</color>
+    <color name="colorBgBleu">#2196F3</color>
 </resources>

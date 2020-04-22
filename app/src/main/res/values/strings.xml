@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name" translatable="false">PPE-Android-2020</string>
+    <!--<string name="app_name" translatable="false">PPE-Android-2020</string>-->
+    <string name="app_name" translatable="false">ChopTaPhoto</string>
     <string name="photo_url_name">Photo:</string>
     <string name="button_title_validate">Valider</string>
     <string name="edit_text_hint_code_event">Code évenement</string>
+    <string name="share_photo_title">Partage de votre photo</string>
 </resources>

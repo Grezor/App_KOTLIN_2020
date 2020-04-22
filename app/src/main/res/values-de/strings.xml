@@ -3,4 +3,5 @@
     <string name="photo_url_name">Das photo:</string>
     <string name="button_title_validate">Validierung</string>
     <string name="edit_text_hint_code_event">Code évenement</string>
+    <string name="share_photo_title">Partage de votre photo</string>
 </resources>
