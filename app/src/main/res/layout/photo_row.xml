@@ -10,9 +10,8 @@
         android:id="@+id/photoTitleTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/PhotoimageView" />
@@ -22,40 +21,55 @@
         android:layout_width="124dp"
         android:layout_height="105dp"
         android:layout_marginTop="16dp"
+        android:scaleType="matrix"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/likeImageView"
         android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginTop="128dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
         app:layout_constraintEnd_toStartOf="@+id/shareimageView"
-        app:layout_constraintStart_toEndOf="@+id/photoTitleTextView"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/photoTitleTextView"
         app:srcCompat="@drawable/ic_like" />
 
     <Button
         android:id="@+id/buttonShare"
         android:layout_width="70dp"
         android:layout_height="37dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="112dp"
+        android:layout_marginBottom="144dp"
         android:backgroundTint="@color/colorBgGrey"
         android:text="share"
         android:textColor="@color/colorButtonText"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/PhotoimageView" />
+        tools:layout_editor_absoluteX="16dp" />
 
     <ImageView
         android:id="@+id/shareimageView"
         android:layout_width="21dp"
         android:layout_height="21dp"
-        android:layout_marginTop="132dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.865"
         app:srcCompat="@drawable/ic_share_icon" />
+
+    <TextView
+        android:id="@+id/likeCountTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="23dp"
+        android:layout_marginBottom="24dp"
+        android:text="10"
+        android:textSize="8sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/likeImageView"
+        app:layout_constraintTop_toBottomOf="@+id/likeImageView"
+        app:layout_constraintVertical_bias="1.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

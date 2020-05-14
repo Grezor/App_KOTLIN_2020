@@ -8,9 +8,12 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 class RetrofitHelper {
 
     companion object {
-            private val photoService: PhotoService = Retrofit.Builder()
+
+        var currentToken = ""
+
+        private val photoService: PhotoService = Retrofit.Builder()
             // le serveur api
-             .baseUrl("https://duplessigeoffrey.fr/api2/")
+            .baseUrl("https://duplessigeoffrey.fr/api2/")
             //.baseUrl("https://yostane.alwaysdata.net/")
             // .baseUrl("https://grezor.alwaysdata.net/")
             // apel dependance mochi
@@ -19,6 +22,8 @@ class RetrofitHelper {
 
         fun getListPhotoCall(codeEvent: String) = photoService.listPhotos(codeEvent)
 
-        fun getToogleLikeCall(photoId: Int) =  photoService.toogleLike(photoId)
+        fun getToogleLikeCall(photoId: Int) =  photoService.toogleLike(photoId, currentToken)
+
+        fun login(login: String, password: String) = photoService.login(login, password)
     }
 }
